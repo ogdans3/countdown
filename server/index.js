@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 
 const uuidv4 = require('uuid/v4');
 
+const db = require("./db.js");
+
 let countdowns = {};
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -25,12 +27,12 @@ app.post("/countdown/new", (req, res) => {
 	let description = req.body.description;
 
 	let countdown = {
+		id: id,
 		datetime: date + " " + time,
 		title: title,
 		description: description
 	}
-	countdowns[id] = countdown;
-	console.log("ID: " + id);
+	db.add(countdown);
 	res.redirect("/" + id);
 })
 
@@ -45,8 +47,9 @@ app.get("/countdown.css", (req, res) => {
 app.get("/datetime.js", (req, res) => {
 	let urlParts = req.header("Referer").split("/")
 	let id = urlParts[urlParts.length - 1];
+	let countdown = db.get(id);
 
-	res.send("var countdown = " + JSON.stringify(countdowns[id]));
+	res.send("var countdown = " + JSON.stringify(countdown));
 })
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, "frontend/index.html")));
