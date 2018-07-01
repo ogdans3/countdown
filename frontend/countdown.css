@@ -1,0 +1,45 @@
+body {
+	font-size: 12px;
+	text-align: center;
+}
+
+#title {
+	font-size: 3em;
+}
+
+#countdown {
+	display: inline-block;
+}
+
+#countdown > span {
+	font-family: 'Varela Round', sans-serif;
+	font-family: 'Orbitron', sans-serif;
+	font-family: 'Roboto', sans-serif;
+
+
+	float: left;
+	padding: 2em;
+}
+
+.number {
+	font-size: 112px;
+	font-weight: 100;
+}
+
+.header {
+	font-size: 2em;
+}
+
+#container, #description, #countdown {
+	padding-top: 5em;
+	margin:0 auto;
+}
+
+#description {
+	max-width: 50em;
+}
+
+.clearer {
+	clear: both;
+}
+
