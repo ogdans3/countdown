@@ -3,6 +3,36 @@ body {
 	text-align: center;
 }
 
+#description {
+	font-size: 1.5em;
+}
+@media only screen and (max-width: 650px) {
+    body {
+    	font-size: 8px;
+    }
+	#description {
+		font-size: 1.5em;
+	}
+}
+
+@media only screen and (max-width: 434px) {
+    body {
+    	font-size: 6px;
+    }
+	#description {
+		font-size: 2em;
+	}
+}
+
+@media only screen and (max-width: 334px) {
+    body {
+    	font-size: 4px;
+    }
+	#description {
+		font-size: 3em;
+	}
+}
+
 #title {
 	font-size: 3em;
 }
@@ -22,7 +52,7 @@ body {
 }
 
 .number {
-	font-size: 112px;
+	font-size: 8em;
 	font-weight: 100;
 }
 
