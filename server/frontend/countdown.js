@@ -1,7 +1,5 @@
 function getTimeRemaining(endtime){
     var t = Date.parse(endtime) - Date.parse(new Date());
-    console.log(Date.parse(endtime), Date.parse(new Date()))
-    console.log(t);
     var seconds = Math.floor( (t/1000) % 60 ) + "";
     var minutes = Math.floor( (t/1000/60) % 60 ) + "";
     var hours = Math.floor( (t/(1000*60*60)) % 24 ) + "";
@@ -17,7 +15,6 @@ function getTimeRemaining(endtime){
     for(var i = 0; i < Object.keys(time).length; i++) {
         var key = Object.keys(time)[i];
         var value = time[key];
-        console.log(value.length);
         if(value.length == 1) {
             time[key] = "0" + value;
         }
@@ -25,9 +22,47 @@ function getTimeRemaining(endtime){
     return time;
 }
 
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+        var status = xhr.status;
+        if (status === 200) {
+            callback(null, xhr.response);
+        } else {
+            callback(status, xhr.response);
+        }
+    };
+    xhr.send();
+};
+
+function initialUpdate() {
+    if(countdown === null || countdown === undefined || countdown.datetime === null || countdown.datetime === undefined) {
+        getJSON(window.location.pathname, function(json) {
+            countdown = JSON.parse(json);
+            initialUpdate();
+        })
+        return;
+    }
+    updateTitle();
+    updateDescription();
+    updateClock();
+    var timeinterval = setInterval(updateClock,1000);
+}
+
+function updateTitle() {
+    var title = document.getElementById("title");
+    title.innerHTML = countdown.title;
+}
+
+function updateDescription() {
+    var description = document.getElementById("description");
+    description.innerHTML = countdown.description;
+}
+
 function updateClock(){
-    var endtime = '31/12/2019';
-    var endtime = 'December 31 2019 10:59:59 GMT+0200';
+    var endtime = countdown.datetime;
     var t = getTimeRemaining(endtime);
     var days = document.getElementById("days");
     var hours = document.getElementById("hours");
@@ -43,6 +78,4 @@ function updateClock(){
     }
 }
 
-console.log("Here");
-updateClock(); // run function once at first to avoid delay
-var timeinterval = setInterval(updateClock,1000);
+initialUpdate();

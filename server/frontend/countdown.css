@@ -37,6 +37,7 @@ body {
 
 #description {
 	max-width: 50em;
+	white-space: pre;
 }
 
 .clearer {
