@@ -17,8 +17,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 app.post("/countdown/new", (req, res) => {
-	console.log(req.body);
-
 	let id = uuidv4();
 
 	let date = req.body.date;
@@ -59,4 +57,4 @@ app.get("/*", (req, res) => {
 })
 
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(80, () => console.log('Example app listening on port 3000!'))
