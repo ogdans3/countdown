@@ -18,8 +18,15 @@
 		<input name = "time" type = "time" step = "1"> <br>
 		<input name = "title" type = "text"> <br>
 		<textarea name = "description"></textarea> <br>
+		<input type = "hidden" name = "timezone" id = "timezone"> <br>
 		<input type = "submit">
 	</form>
+
+	<script src="/moment.js"></script>
+	<script src="/moment-timezone-with-data.js" ></script>
+	<script>
+		document.getElementById("timezone").value = moment.tz.guess();
+	</script>
 
 </body>
 </html>

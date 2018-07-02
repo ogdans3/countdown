@@ -1,5 +1,5 @@
 function getTimeRemaining(endtime){
-    var t = Date.parse(endtime) - Date.parse(new Date());
+    var t = new Date(endtime * 1000) - new Date();
     var seconds = Math.floor( (t/1000) % 60 ) + "";
     var minutes = Math.floor( (t/1000/60) % 60 ) + "";
     var hours = Math.floor( (t/(1000*60*60)) % 24 ) + "";
@@ -38,7 +38,7 @@ var getJSON = function(url, callback) {
 };
 
 function initialUpdate() {
-    if(countdown === null || countdown === undefined || countdown.datetime === null || countdown.datetime === undefined) {
+    if(countdown === null || countdown === undefined || countdown.epoch === null || countdown.epoch === undefined) {
         getJSON(window.location.pathname, function(json) {
             countdown = JSON.parse(json);
             initialUpdate();
@@ -62,7 +62,7 @@ function updateDescription() {
 }
 
 function updateClock(){
-    var endtime = countdown.datetime;
+    var endtime = countdown.epoch;
     var t = getTimeRemaining(endtime);
     var days = document.getElementById("days");
     var hours = document.getElementById("hours");

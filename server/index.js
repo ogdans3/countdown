@@ -1,10 +1,11 @@
 const path = require("path");
 
-const express = require('express')
+const express = require("express")
 const app = express()
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser")
 
-const uuidv4 = require('uuid/v4');
+const uuidv4 = require("uuid/v4");
+const moment = require("moment-timezone");
 
 const db = require("./db.js");
 
@@ -20,20 +21,31 @@ app.post("/countdown/new", (req, res) => {
 	let id = uuidv4();
 
 	let date = req.body.date;
+	let timezone = req.body.timezone;
 	let time = req.body.time;
 	let title = req.body.title;
 	let description = req.body.description;
 
 	let countdown = {
 		id: id,
+		date: date,
+		time: time,
+		epoch: moment(date + " " + time).tz(timezone).unix(),
 		datetime: date + " " + time,
 		title: title,
-		description: description
+		description: description,
+		timezone: timezone
 	}
 	db.add(countdown);
 	res.redirect("/" + id);
 })
 
+app.get("/moment-timezone-with-data.js", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend/moment-timezone-with-data.js"));
+})
+app.get("/moment.js", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend/moment.js"));
+})
 app.get("/countdown.js", (req, res) => {
 	res.sendFile(path.join(__dirname, "frontend/countdown.js"));
 })
