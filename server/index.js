@@ -30,7 +30,7 @@ app.post("/countdown/new", (req, res) => {
 		id: id,
 		date: date,
 		time: time,
-		epoch: moment(date + " " + time).tz(timezone).unix(),
+		epoch: moment.tz(date + " " + time, timezone).unix(),
 		datetime: date + " " + time,
 		title: title,
 		description: description,
