@@ -75,19 +75,13 @@
 			countdown.title = document.getElementById("input_title").value;
 			countdown.description = document.getElementById("input_description").value;
 			countdown.epoch = new Date(document.getElementById("input_date").value + " " + document.getElementById("input_time").value).getTime() / 1000;
-			console.log(countdown.epoch * 1000, new Date(), countdown.epoch * 1000 - new Date());
-			if(countdown.epoch * 1000 - new Date() < 0) {
-				//We do not want a negative date
-				countdown.epoch = tomorrow().getTime() / 1000;
-				console.log(countdown.epoch)
-			}
 			updateTitle();
     		updateDescription();
     		updateClock();
     		if(timeinterval !== null) {
     			clearInterval(timeinterval);
     		}
-    		timeinterval = setInterval(updateClock,1000);
+    		timeinterval = setInterval(updateClock, 1000);
 		}
 		update();
 	</script>

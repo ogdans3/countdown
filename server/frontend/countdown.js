@@ -1,3 +1,5 @@
+var timeinterval = null;
+
 function getTimeRemaining(endtime){
     var t = new Date(endtime * 1000) - new Date();
     var seconds = Math.floor( (t/1000) % 60 ) + "";
@@ -48,7 +50,7 @@ function initialUpdate() {
     updateTitle();
     updateDescription();
     updateClock();
-    var timeinterval = setInterval(updateClock,1000);
+    timeinterval = setInterval(updateClock,1000);
 }
 
 function updateTitle() {
@@ -64,6 +66,13 @@ function updateDescription() {
 function updateClock(){
     var endtime = countdown.epoch;
     var t = getTimeRemaining(endtime);
+    if(t.total < 0){
+        clearInterval(timeinterval);
+        t.days = "00";
+        t.hours = "00";
+        t.minutes = "00";
+        t.seconds = "00";
+    }
     var days = document.getElementById("days");
     var hours = document.getElementById("hours");
     var minutes = document.getElementById("minutes");
@@ -72,9 +81,6 @@ function updateClock(){
     hours.innerHTML = t.hours;
     minutes.innerHTML = t.minutes;
     seconds.innerHTML = t.seconds;
-
-    if(t.total<=0){
-        clearInterval(timeinterval);
-    }
 }
+
 
