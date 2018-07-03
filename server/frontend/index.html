@@ -9,23 +9,87 @@
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">
-
 </head>
 <body>
 
-	<form method = "POST" action = "/countdown/new">
-		<input name = "date" type = "date"> <br>
-		<input name = "time" type = "time" step = "1"> <br>
-		<input name = "title" type = "text"> <br>
-		<textarea name = "description"></textarea> <br>
+	<form method = "POST" action = "/countdown/new" id = "form">
+		<input id = "input_date" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "date" type = "date"> <br>
+		<input id = "input_time" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "time" type = "time" step = "1" value = "13:30:40"> <br>
+		<input id = "input_title" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "title" type = "text" value = "Countdown"> <br>
+		<textarea id = "input_description" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "description"></textarea> <br>
 		<input type = "hidden" name = "timezone" id = "timezone"> <br>
 		<input type = "submit">
 	</form>
 
+		<div style = "padding-top: 25px;">
+			<h1>Preview</h1>
+			<div id = "container" style = "border: 1px solid#000;"> 
+				<div id = "title"></div>
+				<div id = "countdown">
+					<span>
+						<span class = "number" id = "days"></span> <br />
+						<span class = "header">Days</span>
+					</span>
+					<span>
+						<span class = "number" id = "hours"></span> <br />
+						<span class = "header">Hours</span>
+					</span>
+					<span>
+						<span class = "number" id = "minutes"></span> <br />
+						<span class = "header">Minutes</span>
+					</span>
+					<span>
+						<span class = "number" id = "seconds"></span> <br />
+						<span class = "header">Seconds</span>
+					</span>
+					<div class = "clearer"></div>
+				</div>
+				<div id = "description"></div>
+			</div>
+		</div>
+	
+
 	<script src="/moment.js"></script>
 	<script src="/moment-timezone-with-data.js" ></script>
+	<script src="/countdown.js" ></script>
 	<script>
+		function today() {
+			return new Date();
+		}
+		function tomorrow() {
+			var _today = today();
+			var tomorrow = new Date(_today);
+			tomorrow.setDate(_today.getDate()+1);
+			return tomorrow;
+		}
+		console.log(today().getFullYear() + "-" + ((today().getMonth() + 1 + "").length == 1 ? "0" + (today().getMonth() + 1) : (today().getMonth() + 1)) + "-" + ((today().getDate() + "").length == 1 ? "0" + today().getDate() : today().getDate()));
+
+		document.getElementById("input_date").value = tomorrow().getFullYear() + "-" + ((tomorrow().getMonth() + 1 + "").length == 1 ? "0" + (tomorrow().getMonth() + 1) : (tomorrow().getMonth() + 1)) + "-" + ((tomorrow().getDate() + "").length == 1 ? "0" + tomorrow().getDate() : tomorrow().getDate());
+		document.getElementById("input_date").min = today().getFullYear() + "-" + ((today().getMonth() + 1 + "").length == 1 ? "0" + (today().getMonth() + 1) : (today().getMonth() + 1)) + "-" + ((today().getDate() + "").length == 1 ? "0" + today().getDate() : today().getDate());
 		document.getElementById("timezone").value = moment.tz.guess();
+		var countdown = {};
+		var timeinterval = null;
+
+		function update() {
+			document.getElementById("form").checkValidity();
+			countdown.title = document.getElementById("input_title").value;
+			countdown.description = document.getElementById("input_description").value;
+			countdown.epoch = new Date(document.getElementById("input_date").value + " " + document.getElementById("input_time").value).getTime() / 1000;
+			console.log(countdown.epoch * 1000, new Date(), countdown.epoch * 1000 - new Date());
+			if(countdown.epoch * 1000 - new Date() < 0) {
+				//We do not want a negative date
+				countdown.epoch = tomorrow().getTime() / 1000;
+				console.log(countdown.epoch)
+			}
+			updateTitle();
+    		updateDescription();
+    		updateClock();
+    		if(timeinterval !== null) {
+    			clearInterval(timeinterval);
+    		}
+    		timeinterval = setInterval(updateClock,1000);
+		}
+		update();
 	</script>
 
 </body>

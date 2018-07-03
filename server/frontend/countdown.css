@@ -49,6 +49,7 @@ body {
 
 	float: left;
 	padding: 2em;
+	padding-bottom: 1em;
 }
 
 .number {
@@ -68,6 +69,8 @@ body {
 #description {
 	max-width: 50em;
 	white-space: pre;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 .clearer {
