@@ -4,6 +4,7 @@
 	<title>Countdown</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="countdown.css">
+	<link rel="stylesheet" type="text/css" href="index.css">
 
 	<!--        FONTS               -->
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
@@ -12,13 +13,13 @@
 </head>
 <body>
 
-	<form method = "POST" action = "/countdown/new" id = "form">
+	<form method = "POST" action = "/countdown/new" id = "form" class = "form-style-ogdans3">
+		<input id = "input_title" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "title" type = "text" placeholder= "Title"> <br>
 		<input id = "input_date" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "date" type = "date"> <br>
 		<input id = "input_time" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "time" type = "time" step = "1" value = "13:30:40"> <br>
-		<input id = "input_title" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "title" type = "text" value = "Countdown"> <br>
-		<textarea id = "input_description" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "description"></textarea> <br>
+		<textarea id = "input_description" onkeypress = "update()" onkeyup = "update()" onchange = "update()" name = "description" placeholder = "Description"></textarea> <br>
 		<input type = "hidden" name = "timezone" id = "timezone"> <br>
-		<input type = "submit">
+		<input type = "submit" class = "action-button">
 	</form>
 
 		<div style = "padding-top: 25px;">

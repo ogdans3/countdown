@@ -53,6 +53,9 @@ app.get("/countdown.js", (req, res) => {
 app.get("/countdown.css", (req, res) => {
 	res.sendFile(path.join(__dirname, "frontend/countdown.css"));
 })
+app.get("/index.css", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend/index.css"));
+})
 
 app.get("/datetime.js", (req, res) => {
 	let urlParts = req.header("Referer").split("/")

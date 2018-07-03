@@ -1,0 +1,71 @@
+h1 {
+	font-size: 2em;
+}
+
+
+/*form styles*/
+.form-style-ogdans3 {
+	max-width: 400px;
+	width: 100%;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+.form-style-ogdans3 fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+.form-style-ogdans3 fieldset:not(:first-of-type) {
+	display: none;
+}
+/*inputs*/
+.form-style-ogdans3 input, .form-style-ogdans3 textarea {
+	font-size: 1.7em;
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #2C3E50;
+}
+.form-style-ogdans3 textarea {
+	height: 100px;
+}
+
+/*buttons*/
+.form-style-ogdans3 .action-button {
+	cursor: pointer;
+}
+.form-style-ogdans3 .action-button:hover, .form-style-ogdans3 .action-button:focus {
+	background: #27AE60;
+	color: white;
+}
+
+@media only screen and (max-width: 660px) {
+	.form-style-ogdans3 input, .form-style-ogdans3 textarea, h1 {
+		font-size: 2.5em;
+	}
+}
+
+@media only screen and (max-width: 460px) {
+	.form-style-ogdans3 input, .form-style-ogdans3 textarea, h1 {
+		font-size: 3.3em;
+	}
+}
+
+@media only screen and (max-width: 350px) {
+	.form-style-ogdans3 input, .form-style-ogdans3 textarea, h1 {
+		font-size: 4.9em;
+	}
+}

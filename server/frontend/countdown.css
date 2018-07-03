@@ -1,21 +1,26 @@
 body {
 	font-size: 12px;
 	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+	font-size: 2.5em;
 }
 
 #description {
 	font-size: 1.5em;
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 660px) {
     body {
     	font-size: 8px;
-    }
+    	}
 	#description {
 		font-size: 1.5em;
 	}
 }
 
-@media only screen and (max-width: 434px) {
+@media only screen and (max-width: 460px) {
     body {
     	font-size: 6px;
     }
@@ -24,7 +29,7 @@ body {
 	}
 }
 
-@media only screen and (max-width: 334px) {
+@media only screen and (max-width: 350px) {
     body {
     	font-size: 4px;
     }
@@ -76,4 +81,3 @@ body {
 .clearer {
 	clear: both;
 }
-
