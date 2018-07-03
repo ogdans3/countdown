@@ -63,7 +63,6 @@
 			tomorrow.setDate(_today.getDate()+1);
 			return tomorrow;
 		}
-		console.log(today().getFullYear() + "-" + ((today().getMonth() + 1 + "").length == 1 ? "0" + (today().getMonth() + 1) : (today().getMonth() + 1)) + "-" + ((today().getDate() + "").length == 1 ? "0" + today().getDate() : today().getDate()));
 
 		document.getElementById("input_date").value = tomorrow().getFullYear() + "-" + ((tomorrow().getMonth() + 1 + "").length == 1 ? "0" + (tomorrow().getMonth() + 1) : (tomorrow().getMonth() + 1)) + "-" + ((tomorrow().getDate() + "").length == 1 ? "0" + tomorrow().getDate() : tomorrow().getDate());
 		document.getElementById("input_date").min = today().getFullYear() + "-" + ((today().getMonth() + 1 + "").length == 1 ? "0" + (today().getMonth() + 1) : (today().getMonth() + 1)) + "-" + ((today().getDate() + "").length == 1 ? "0" + today().getDate() : today().getDate());

@@ -5,7 +5,25 @@ function getTimeRemaining(endtime){
     var seconds = Math.floor( (t/1000) % 60 ) + "";
     var minutes = Math.floor( (t/1000/60) % 60 ) + "";
     var hours = Math.floor( (t/(1000*60*60)) % 24 ) + "";
-    var days = Math.floor( t/(1000*60*60*24) ) + "";
+    var days = Math.floor( t/(1000*60*60*24) );
+
+    var d = days;
+    var count = 0;
+    //Thousand, Million, Billion, Trillion
+    var shorthand = ["K", "M", "B", "T"];
+    while(d >= 1000) {
+        d = Math.floor(d / 1000);
+        count++;
+    }
+    if(days >= 1000) {
+        days = Math.floor(days / 1000**count);
+        if(count > shorthand.length) {
+            days = days + shorthand[shorthand.length - 1];
+        }else {
+            days = days + shorthand[count - 1];
+        }
+    }
+    days = days + "";
 
     var time = {
         'total': t,
