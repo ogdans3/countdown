@@ -2,7 +2,9 @@ const path = require("path");
 
 const express = require("express")
 const app = express()
+
 const bodyParser = require("body-parser")
+const compression = require("compression");
 
 const uuidv4 = require("uuid/v4");
 const moment = require("moment-timezone");
@@ -15,6 +17,7 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 	extended: true
 })); 
+app.use(compression())
 
 
 app.post("/countdown/new", (req, res) => {

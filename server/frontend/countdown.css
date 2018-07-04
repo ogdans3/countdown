@@ -1,5 +1,5 @@
-body {
-	font-size: 12px;
+#container {
+	font-size: 24px;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 }
@@ -7,35 +7,10 @@ body {
 #description {
 	font-size: 1.5em;
 }
-@media only screen and (max-width: 660px) {
-    body {
-    	font-size: 8px;
-    	}
-	#description {
-		font-size: 1.5em;
-	}
-}
 
-@media only screen and (max-width: 460px) {
-    body {
-    	font-size: 6px;
-    }
-	#description {
-		font-size: 2em;
-	}
-}
-
-@media only screen and (max-width: 350px) {
-    body {
-    	font-size: 4px;
-    }
-	#description {
-		font-size: 3em;
-	}
-}
 
 #title {
-	font-size: 3em;
+	font-size: 2em;
 }
 
 #countdown {
@@ -54,26 +29,67 @@ body {
 }
 
 .number {
-	font-size: 8em;
+	font-size: 3.3em;
 	font-weight: 100;
 }
 
 .header {
-	font-size: 2em;
+	font-size: 1em;
 }
 
 #container, #description, #countdown {
-	padding-top: 5em;
+	padding-top: 1em;
 	margin:0 auto;
 }
 
 #description {
 	max-width: 50em;
 	white-space: pre;
-	padding-top: 50px;
 	padding-bottom: 50px;
 }
 
 .clearer {
 	clear: both;
+}
+
+@media only screen and (max-width: 800px) {
+	#container {
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width: 670px) {
+	#container {
+		font-size: 16px;
+	}
+	#description, .header {
+		font-size: 1em;
+	}
+}
+
+@media only screen and (max-width: 540px) {
+	#container {
+		font-size: 12px;
+	}
+	#description, .header {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 420px) {
+	#container {
+		font-size: 10px;
+	}
+	#description, .header {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 390px) {
+	#container {
+		font-size: 8px;
+	}
+	#description, .header {
+		font-size: 10px;
+	}
 }

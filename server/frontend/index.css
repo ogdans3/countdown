@@ -1,7 +1,12 @@
+body {
+	font-size: 16px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
 h1 {
 	font-size: 2em;
 }
-
 
 /*form styles*/
 .form-style-ogdans3 {
@@ -30,7 +35,7 @@ h1 {
 }
 /*inputs*/
 .form-style-ogdans3 input, .form-style-ogdans3 textarea {
-	font-size: 1.7em;
+	font-size: 1.5em;
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -54,18 +59,18 @@ h1 {
 
 @media only screen and (max-width: 660px) {
 	.form-style-ogdans3 input, .form-style-ogdans3 textarea, h1 {
-		font-size: 2.5em;
+		font-size: 1.5em;
 	}
 }
 
 @media only screen and (max-width: 460px) {
 	.form-style-ogdans3 input, .form-style-ogdans3 textarea, h1 {
-		font-size: 3.3em;
+		font-size: 1.5em;
 	}
 }
 
 @media only screen and (max-width: 350px) {
 	.form-style-ogdans3 input, .form-style-ogdans3 textarea, h1 {
-		font-size: 4.9em;
+		font-size: 1.5em;
 	}
 }
